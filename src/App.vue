@@ -2,12 +2,12 @@
 	<img alt="Vue logo" id="vue-logo" src="https://v3.vuejs.org/logo.png" />
 	<h1 v-text="title"></h1>
 	<p v-html="magic"></p>
-	<form @submit.prevent="listing.push({ name: lol })">
-		<input class="task-input" v-model="lol" />
+	<form @submit.prevent="nigga">
+		<input class="task-input" v-model.lazy="lol" />
 		<button class="task-button" type="submit">lol</button>
 	</form>
 	<ul>
-		<li v-for="names in listing">{{ names.name }}</li>
+		<li v-for="names in listing" v-bind:key="names">{{ names.name }}</li>
 	</ul>
 </template>
 
@@ -21,6 +21,14 @@ export default {
 			magic: '<h2>this is to-do list</h2>',
 			listing: [{ name: 'something' }]
 		};
+	},
+	methods: {
+		nigga() {
+			if (this.lol !== '') {
+				this.listing.push({ name: this.lol });
+			}
+			this.lol = '';
+		}
 	}
 };
 </script>
