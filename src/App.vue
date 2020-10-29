@@ -1,6 +1,6 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png" />
-  <h1>{{ title.toUpperCase() }}</h1>
+  <img alt="Vue logo" src="https://v3.vuejs.org/logo.png" />
+  <h1 v-text="title"></h1>
   <p v-html="magic"></p>
 </template>
 
