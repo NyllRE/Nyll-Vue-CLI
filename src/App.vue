@@ -2,9 +2,13 @@
 	<img alt="Vue logo" id="vue-logo" src="https://v3.vuejs.org/logo.png" />
 	<h1 v-text="title"></h1>
 	<p v-html="magic"></p>
+	<strong>
+		there is {{ taskCount }}
+		<span v-if="taskCount == 1"> task </span>
+		<span v-else> tasks </span>
+	</strong>
 	<form @submit.prevent="nigga">
 		<input class="task-input" v-model.lazy="lol" />
-		<button class="task-button" type="submit">lol</button>
 	</form>
 	<ul>
 		<li v-for="names in listing" v-bind:key="names">{{ names.name }}</li>
@@ -28,6 +32,11 @@ export default {
 				this.listing.push({ name: this.lol });
 			}
 			this.lol = '';
+		}
+	},
+	computed: {
+		taskCount() {
+			return this.listing.length;
 		}
 	}
 };
@@ -59,12 +68,5 @@ export default {
 	border: none;
 	background: linear-gradient(to left, rgb(109, 0, 128), rgb(173, 102, 114));
 	color: wheat;
-}
-.task-button {
-	margin: 5px;
-	border: none;
-	padding: 5px 15px;
-	color: wheat;
-	background: linear-gradient(135deg, purple, rgb(255, 30, 67));
 }
 </style>
